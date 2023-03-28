@@ -63,7 +63,7 @@ export default function Header() {
 }
 
 // styled
-const HeaderBar = styled.header`
+const HeaderBar = styled.div`
   position: relative;
   width: 100%;
   display: flex;
@@ -82,7 +82,7 @@ const HeaderBar = styled.header`
   }
 `
 
-const NavBar = styled.nav`
+const NavBar = styled.header`
   z-index: 9000;
   position: fixed;
   top: 0;
@@ -103,7 +103,7 @@ const NavBar = styled.nav`
   }
 `
 
-const NavView = styled.div`
+const NavView = styled.nav`
   width: 100%;
   max-width: 1240px;
   padding: 0 20px;
