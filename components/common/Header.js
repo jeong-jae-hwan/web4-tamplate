@@ -3,9 +3,7 @@ import Link from 'next/link'
 
 //png,svg
 import Logo from 'public/images/logo.svg'
-import InstaIcon from 'public/icons/insta-icon.svg'
-import TwitterIcon from 'public/icons/twitter-icon.svg'
-import YoutubeIcon from 'public/icons/youtube-icon.svg'
+import WalletIcon from 'public/icons/wallet-icon.svg'
 
 //styles
 import styled from '@emotion/styled'
@@ -36,25 +34,9 @@ export default function Header() {
               <Logo alt="서비스명" fill={isFixed ? '#333' : '#fff'} />
             </Link>
 
-            <Menus>
-              <Menu>
-                <Link href="s">
-                  <InstaIcon fill={isFixed ? '#999' : '#fff'} />
-                </Link>
-              </Menu>
-
-              <Menu>
-                <Link href="s">
-                  <TwitterIcon fill={isFixed ? '#999' : '#fff'} />
-                </Link>
-              </Menu>
-
-              <Menu>
-                <Link href="s">
-                  <YoutubeIcon fill={isFixed ? '#999' : '#fff'} />
-                </Link>
-              </Menu>
-            </Menus>
+            <Button type="button" isActive={isFixed}>
+              <WalletIcon />
+            </Button>
           </NavView>
         </NavBar>
       </HeaderBar>
@@ -126,30 +108,15 @@ const NavView = styled.nav`
   }
 `
 
-const Menus = styled.ul`
-  display: flex;
-  align-items: center;
-  column-gap: 6px;
-`
+const Button = styled.button`
+  width: 24px;
 
-const Menu = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  svg {
+    fill: ${({ isActive }) => (isActive ? '#aaa' : '#fff')};
+    width: 100%;
+  }
 
-  a {
-    padding: 10px;
-
-    svg {
-      width: 22px;
-
-      @media (max-width: 600px) {
-        width: 20px;
-      }
-
-      &:hover {
-        opacity: 0.7;
-      }
-    }
+  @media (max-width: 600) {
+    width: 22px;
   }
 `

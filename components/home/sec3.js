@@ -1,52 +1,45 @@
 import React from 'react'
+import Image from 'next/image'
 
-//style
+//styled
 import styled from '@emotion/styled'
 
 //png
-import bannerImg from 'public/images/sec3-img1.png'
-import productImg from 'public/images/sec3-img2.png'
-import Image from 'next/image'
-import { css } from '@emotion/react'
+import img1 from 'public/images/sec3/img1.png'
+import img2 from 'public/images/sec3/img2.png'
+import img3 from 'public/images/sec3/img3.png'
 
 //
 export default function Sec3() {
+  const items = [
+    { img: img1, name: 'Citizen', tags: '#adventure #profile' },
+    { img: img2, name: 'Big BOoss', tags: '#adventure #bear' },
+    { img: img3, name: 'Flower Life', tags: '#adventure #view #tree' },
+  ]
+
   return (
     <View>
-      <Wrap>
-        <Image src={bannerImg} alt="sec3" />
-        <Box>
-          <strong>{'테플릿을 무료로\n 이용하세요!'}</strong>
-          <p>
-            Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam eaque ipsa,
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt,
-          </p>
-        </Box>
-      </Wrap>
+      <h2 data-aos="fade">
+        다양한 상품을
+        <br />
+        둘러보고 구매하세요
+      </h2>
 
-      <Box
-        css={css`
-          padding: 40px 40px 0 40px;
-
-          @media (max-width: 600px) {
-            padding: 40px 30px 0 30px;
-          }
-        `}
-      >
-        <strong>{'우리는 다양한 사용자들을\n이해하고 있습니다.'}</strong>
-        <p>
-          Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt,
-        </p>
-
-        <div>
-          <Image src={productImg} alt="sec3" />
-        </div>
-      </Box>
+      <Items>
+        {items.map((item, i) => {
+          return (
+            <Item key={i}>
+              <Image src={item.img} alt={item.name} data-aos="fade" />
+              <span data-aos="fade" data-aos-delay="200">
+                {item.name}
+              </span>
+              <p data-aos="fade" data-aos-delay="200">
+                {item.tags}
+              </p>
+            </Item>
+          )
+        })}
+      </Items>
     </View>
   )
 }
@@ -54,104 +47,93 @@ export default function Sec3() {
 //styled
 const View = styled.div`
   width: 100%;
-  max-width: 1180px;
+  max-width: 1200px;
   display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
-  padding: 0 20px 140px;
+  flex-direction: column;
+  padding: 0 25px;
   transition: 0.3s ease-in-out;
-  row-gap: 20px;
-  column-gap: 20px;
 
-  @media (max-width: 600px) {
-    padding: 0 20px 0;
+  h2 {
+    font-size: 40px;
+    line-height: 1.35;
+
+    @media (max-width: 1080px) {
+      font-size: 34px;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 26px;
+    }
   }
 `
 
-const Wrap = styled.div`
+const Items = styled.ul`
   width: 100%;
-  max-width: 560px;
+  display: flex;
+  align-items: stretch;
+  column-gap: 30px;
+  row-gap: 40px;
+  padding: 40px 0 20px;
+  transition: 0.3s ease-in-out;
+
+  @media (max-width: 1080px) {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 10px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 26px 0 20px;
+    flex-wrap: wrap;
+  }
+`
+
+const Item = styled.li`
+  width: 100%;
+  max-width: calc(100% / 3 - 20px);
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 6px;
+  transition: 0.3s ease-in-out;
 
-  @media (max-width: 1180px) {
+  @media (max-width: 1080px) {
+    max-width: 360px;
+    min-width: 360px;
+  }
+
+  @media (max-width: 600px) {
     max-width: 100%;
+    min-width: 100%;
   }
 
   img {
     width: 100%;
-    height: 290px;
-    border-radius: 6px;
+    max-height: 400px;
+    aspect-ratio: 1 / 2;
     object-fit: cover;
-  }
-`
-
-const Box = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 560px;
-  padding: 40px;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-
-  @media (max-width: 1180px) {
-    max-width: 100%;
+    margin-bottom: 10px;
+    border-radius: 8px;
   }
 
-  @media (max-width: 600px) {
-    padding: 40px 30px;
-  }
-
-  strong {
-    font-size: 30px;
-    font-weight: 600;
-    white-space: pre-line;
-    line-height: 1.4;
-
-    @media (max-width: 1080px) {
-      font-size: 26px;
-    }
+  span {
+    font-size: 18px;
+    font-weight: 500;
 
     @media (max-width: 600px) {
-      font-size: 22px;
+      font-size: 16px;
     }
   }
 
   p {
+    white-space: pre-line;
     font-size: 15px;
-    color: #888;
-    line-height: 1.4;
-    margin-top: 20px;
+    color: #1c78f2;
 
     @media (max-width: 600px) {
       font-size: 14px;
-    }
-  }
-
-  div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-top: 50px;
-
-    img {
-      width: 338px;
-      height: 260px;
-
-      @media (max-width: 600px) {
-        width: 300px;
-        height: auto;
-      }
-
-      @media (max-width: 400px) {
-        width: 240px;
-        height: auto;
-      }
     }
   }
 `

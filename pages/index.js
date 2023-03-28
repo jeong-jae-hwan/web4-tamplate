@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 //modlues
 import { Section } from 'deep-ui-design'
@@ -13,18 +13,11 @@ import Sec3 from '@/components/home/sec3'
 import Sec4 from '@/components/home/sec4'
 import Sec5 from '@/components/home/sec5'
 import Sec6 from '@/components/home/sec6'
+import Sec7 from '@/components/home/sec7'
+import Sec8 from '@/components/home/sec8'
 
 //
 export default function Index() {
-  const contectRef = useRef()
-
-  const handleFocus = i => {
-    contectRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
-  }
-
   useEffect(() => {
     Aos.init({ duration: 900, easing: 'ease-in-out' })
   }, [])
@@ -33,12 +26,14 @@ export default function Index() {
     <>
       <SEO title="템플릿 웹 사이트" />
       <Section>
-        <Sec1 handleFocus={handleFocus} />
+        <Sec1 />
         <Sec2 />
         <Sec3 />
-        <Sec4 handleFocus={handleFocus} />
+        <Sec4 />
         <Sec5 />
-        <Sec6 contectRef={contectRef} />
+        <Sec6 />
+        <Sec7 />
+        <Sec8 />
       </Section>
     </>
   )

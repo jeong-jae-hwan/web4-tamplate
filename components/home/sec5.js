@@ -1,25 +1,23 @@
 import React from 'react'
-import Image from 'next/image'
 
-//style
+//styled
 import styled from '@emotion/styled'
-
-//png
-import bannerImg from 'public/images/sec5-img.png'
 
 //
 export default function Sec5() {
   return (
     <View>
-      <Image src={bannerImg} alt="banner" data-aos="zoom-in" />
-      <strong data-aos="fade" data-aos-delay="100">
-        {'우리는 나아갑니다\n그리고 만들어갑니다.'}
+      <strong data-aos="fade">
+        {'국내 최고의 전문가\n 서비스와 함께 하세요!'}
       </strong>
       <p data-aos="fade" data-aos-delay="200">
-        Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
-        accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab
-        illo inventore veritatis et quasi architecto beatae vitae dicta sunt,
+        {
+          '손쉬운 가입 및 서비스 등록을 통해\n 다양한 컬렉션을 등록 및 업로드하세요!'
+        }
       </p>
+      <button type="button" data-aos="fade" data-aos-delay="300">
+        서비스 등록신청
+      </button>
     </View>
   )
 }
@@ -27,63 +25,55 @@ export default function Sec5() {
 //styled
 const View = styled.div`
   width: 100%;
-  max-width: 1180px;
-  padding: 120px 20px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 20px;
+  background-color: #f7f8fa;
+  padding: 60px 25px;
   transition: 0.3s ease-in-out;
+  border-radius: 12px;
 
   @media (max-width: 600px) {
-    padding: 0 0 80px;
-    row-gap: 16px;
-  }
-
-  img {
-    width: 100%;
-    max-height: 460px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-
-    @media (max-width: 1080px) {
-      max-height: 360px;
-    }
-
-    @media (max-width: 600px) {
-      max-height: 260px;
-      border-radius: 0;
-      margin-bottom: 10px;
-    }
+    padding: 50px 25px;
+    border-radius: 0;
   }
 
   strong {
-    font-size: 32px;
-    text-align: center;
+    font-size: 26px;
     line-height: 1.4;
 
-    @media (max-width: 1080px) {
-      font-size: 26px;
-    }
-
     @media (max-width: 600px) {
-      font-size: 24px;
+      font-size: 22px;
+      text-align: center;
       white-space: pre-line;
     }
   }
 
   p {
-    width: 100%;
-    max-width: 640px;
-    font-size: 15px;
-    color: #797979;
-    text-align: center;
+    font-size: 14px;
+    color: #888;
+    line-height: 1.4;
 
     @media (max-width: 600px) {
       font-size: 14px;
+      text-align: center;
       white-space: pre-line;
-      padding: 0 20px;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 14px 22px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 15px;
+    background-color: #1c78f2;
+    color: #fff;
+
+    &:hover {
+      opacity: 0.9;
     }
   }
 `
