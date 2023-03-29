@@ -11,8 +11,8 @@ import banner3 from 'public/images/sec1/banner3.jpg'
 
 //module
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Pagination } from 'swiper'
-SwiperCore.use([Pagination])
+import SwiperCore, { Pagination, Autoplay } from 'swiper'
+SwiperCore.use([Pagination, Autoplay])
 
 //
 export default function Sec1() {
@@ -39,7 +39,12 @@ export default function Sec1() {
 
   return (
     <View>
-      <Swiper modules={[Pagination]} pagination={true} className="swiper">
+      <Swiper
+        modules={[Pagination]}
+        autoplay={{ delay: 2500 }}
+        pagination={true}
+        className="swiper"
+      >
         {banners.map((item, i) => {
           return (
             <SwiperSlide key={i} className="swiper_item">
